@@ -1,0 +1,46 @@
+/*
+Given five positive integers, find the minimum and maximum values that can be 
+calculated by summing exactly four of the five integers. Then print the respective
+minimum and maximum values as a single line of two space-separated long integers.
+
+Example:
+
+Input: 1 3 5 7 9
+minimum value = 1+3+5+7
+maximum value = 3+5+7+9
+
+Output: 16 24
+*/
+#include<stdio.h>
+int main()
+{
+    int size,min=0,max=0,temp;
+    scanf("%d",&size);
+    int input[size];
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&input[i]);
+    }
+    for(int i=0;i<size;i++)
+    {
+        for(int j=i+1;j<size;j++)
+        {
+            if(input[i]>input[j])
+            {
+            temp=input[i];
+            input[i]=input[j];
+            input[j]=temp;
+            }
+        }
+    }
+    
+    for(int i=0;i<size-1;i++)
+    {
+        min=min+input[i];
+    }
+    for(int i=1;i<size;i++)
+    {
+        max=max+input[i];
+    }
+    printf("%d %d",min,max);
+}
